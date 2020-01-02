@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Amplify from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react'; // or 'aws-amplify-react-native';
+import { Auth } from 'aws-amplify';
 
 Amplify.configure({
   Auth: {
@@ -19,25 +19,91 @@ Amplify.configure({
   }
 });
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <p>
+            Below are some examples of Cognito functionality written using Amplify SDK
+          </p>
+        </header>
+        <SignOut/>
+        <CurrentAuthenticatedUser/>
+        <RetrieveCurrentSession/>
+      </div>
+    );
+  }
 }
 
-export default withAuthenticator(App, true);
+export default withAuthenticator(App, false);
+
+//  Functionality Components
+// Global Sign Out
+class SignOut extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleGlobalSignOut = this.handleGlobalSignOut.bind(this);
+  }
+  handleGlobalSignOut(){
+    Auth.signOut({ global: true })
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+    <div className="Amplify-component">
+      <h4>Global Sign Out</h4>
+      <button onClick={this.handleGlobalSignOut}>Sign Out</button>
+    </div>
+    );
+  }
+}
+
+// Current Authenticated User
+class CurrentAuthenticatedUser extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleGetCurrentAuthenticatedUser = this.handleGetCurrentAuthenticatedUser.bind(this);
+  }
+  handleGetCurrentAuthenticatedUser(){
+    Auth.currentAuthenticatedUser({
+      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(user => console.log(user))
+    .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+    <div className="Amplify-component Amplify-component-light">
+      <h4>Current Authenticated User</h4>
+      <button onClick={this.handleGetCurrentAuthenticatedUser}>Check Console</button>
+    </div>
+    );
+  }
+}
+
+// Retrieve Current Session
+class RetrieveCurrentSession extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleRetrieveCurrentSession = this.handleRetrieveCurrentSession.bind(this);
+  }
+  handleRetrieveCurrentSession(){
+    Auth.currentSession()
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+    <div className="Amplify-component">
+      <h4>Retrieve Current Session</h4>
+      <button onClick={this.handleRetrieveCurrentSession}>Check Console</button>
+    </div>
+    );
+  }
+}
