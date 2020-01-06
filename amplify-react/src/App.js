@@ -114,7 +114,7 @@ class CurrentAuthenticatedUser extends React.Component {
 
   render() {
     return (
-    <div className="Amplify-component Amplify-component-light">
+    <div className="Amplify-component">
       <h4>Current Authenticated User</h4>
       <button onClick={this.handleGetCurrentAuthenticatedUser}>Check Console</button>
     </div>
