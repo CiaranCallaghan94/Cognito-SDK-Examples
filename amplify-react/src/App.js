@@ -4,6 +4,8 @@ import Amplify from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react'; // or 'aws-amplify-react-native';
 import { Auth, Hub} from 'aws-amplify';
 
+window.LOG_LEVEL = 'DEBUG';
+
 Amplify.configure({
   Auth: {
       // only for Federated Authentication - Amazon Cognito Identity Pool ID
