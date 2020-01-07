@@ -1,6 +1,8 @@
 # Cognito-SDK-Examples
 
+### amplify-react
 ### Amplify SDK with React example
+
 
 Usage:
 - Download Example
