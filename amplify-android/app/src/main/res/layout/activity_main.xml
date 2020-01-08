@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Sign In as testUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_sign_in_hosted_ui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="HostedUI"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sign_in"
+        app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
+
+    <Button
+        android:id="@+id/btn_sign_in_built_in_ui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Built-in UI"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sign_in_hosted_ui"
+        app:layout_constraintStart_toStartOf="@+id/btn_sign_in_hosted_ui"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sign_in_hosted_ui" />
+
+    <Button
+        android:id="@+id/btn_global_sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Global Sign Out"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sign_in_built_in_ui"
+        app:layout_constraintStart_toStartOf="@+id/btn_sign_in_built_in_ui"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sign_in_built_in_ui" />
+
+    <Button
+        android:id="@+id/btn_current_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Current Authenticated User"
+        app:layout_constraintEnd_toEndOf="@+id/btn_global_sign_out"
+        app:layout_constraintStart_toStartOf="@+id/btn_global_sign_out"
+        app:layout_constraintTop_toBottomOf="@+id/btn_global_sign_out" />
+
+
+    <Button
+        android:id="@+id/btn_current_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Retrieve Current Session"
+        app:layout_constraintEnd_toEndOf="@+id/btn_current_user"
+        app:layout_constraintStart_toStartOf="@+id/btn_current_user"
+        app:layout_constraintTop_toBottomOf="@+id/btn_current_user" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

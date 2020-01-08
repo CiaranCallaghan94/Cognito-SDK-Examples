@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Amplify-Cognito-SDK</string>
+    <string name="username">UPDATE_HERE</string>
+    <string name="password">UPDATE_HERE</string>
+</resources>

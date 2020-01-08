@@ -1,0 +1,31 @@
+{
+    "IdentityManager": {
+        "Default": {}
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "ID_FROM_COGNITO_IDENTITY_POOL",
+                "Region": "REGION_FROM_COGNITO_IDENTITY_POOL"
+            }
+        }
+    },
+    "CognitoUserPool": {
+        "Default": {
+            "PoolId": "ID_FROM_COGNITO_USER_POOL",
+            "AppClientId": "APP_CLIENT_ID_FROM_COGNITO_USER_POOL",
+            "Region": "REGION_FROM_COGNITO_USER_POOL"
+        }
+    },
+  "Auth": {
+  "Default": {
+    "OAuth": {
+      "WebDomain": "DOMAIN_NAME_FROM_COGNITO_USER_POOL",
+      "SignInRedirectURI": "cognitoexample://www.example.com/mainactivity",
+      "SignOutRedirectURI": "cognitoexample://www.example.com/mainactivity",
+      "AppClientId": "APP_CLIENT_ID_FROM_COGNITO_USER_POOL",
+      "Scopes": ["openid", "email", "aws.cognito.signin.user.admin"]
+    }
+  }
+}
+}
