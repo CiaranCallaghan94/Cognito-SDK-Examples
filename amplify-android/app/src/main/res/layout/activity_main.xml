@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Sign In as testUser"
+        android:text="Sign In"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Current Authenticated User"
+        android:text="Username"
         app:layout_constraintEnd_toEndOf="@+id/btn_global_sign_out"
         app:layout_constraintStart_toStartOf="@+id/btn_global_sign_out"
         app:layout_constraintTop_toBottomOf="@+id/btn_global_sign_out" />
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Retrieve Current Session"
+        android:text="Tokens"
         app:layout_constraintEnd_toEndOf="@+id/btn_current_user"
         app:layout_constraintStart_toStartOf="@+id/btn_current_user"
         app:layout_constraintTop_toBottomOf="@+id/btn_current_user" />
