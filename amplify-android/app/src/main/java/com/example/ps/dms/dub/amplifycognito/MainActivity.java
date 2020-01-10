@@ -1,4 +1,4 @@
-package com.amazon.ps.dms.dub.amplifycognito;
+package com.example.ps.dms.dub.amplifycognito;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.amazon.ps.dms.dub.amplifycognito;
+package com.example.ps.dms.dub.amplifycognito;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.amazon.ps.dms.dub.amplifycognito", appContext.getPackageName());
+        assertEquals("com.example.ps.dms.dub.amplifycognito", appContext.getPackageName());
     }
 }
