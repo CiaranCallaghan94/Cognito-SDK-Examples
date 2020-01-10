@@ -10,7 +10,7 @@ Usage:
 
 - To configure your Cognito Userpool to use this app with the Hosted UI, ensure to add this as the callback URI and SignOut URI. "cognitoexample://www.example.com/mainactivity"
 
-![APP UI](./README_Images/UI.png?raw=true "UI" =100x20)
+![APP UI](./README_Images/UI.png?raw=true "UI")
 
 To update the app to use your own Cognito resources, simply update the awsconfiguration.json:
  ~~~
