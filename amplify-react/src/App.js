@@ -9,23 +9,23 @@ window.LOG_LEVEL = 'DEBUG';
 Amplify.configure({
   Auth: {
       // only for Federated Authentication - Amazon Cognito Identity Pool ID
-      // identityPoolId: 'eu-west-1:f528caf6-04ca-46e0-ae06-03f0d14240a9',
+      identityPoolId: '',
       // - Amazon Cognito Region
-      region: 'eu-west-1',
+      region: '',
       // - Amazon Cognito User Pool ID
-      userPoolId: 'eu-west-1_UxNvNpFcr',
+      userPoolId: '',
       // - Amazon Cognito Web Client ID (26-char alphanumeric string)
-      userPoolWebClientId: '1rtmin31d9unkfpteemlj3ffdm',
+      userPoolWebClientId: '',
       // - Enforce user authentication prior to accessing AWS resources or not
       mandatorySignIn: false,
 
 	// OPTIONAL - Hosted UI configuration
 	  oauth: {
-		domain: 'cog-sdk-examples.auth.eu-west-1.amazoncognito.com',
+		domain: '',
 		scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-		redirectSignIn: 'http://localhost:3000/',
-		redirectSignOut: 'http://localhost:3000/',
-		responseType: 'token' // or 'token', note that REFRESH token will only be generated when the responseType is code
+		redirectSignIn: '',
+		redirectSignOut: '',
+		responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
 	  }
   }
 });
@@ -60,12 +60,13 @@ class App extends React.Component {
             Below are some examples of Cognito functionality written using Amplify SDK
           </p>
         </header>
-		<SignIn/>
-		<OauthSignIn/>
+		    <SignIn/>
+		    <OauthSignIn/>
         <SignOut/>
         <CurrentAuthenticatedUser/>
         <RetrieveCurrentSession/>
-
+        <CurrentUserCredentials/>
+        <CurrentCredentials/>
       </div>
     );
   }
@@ -182,7 +183,7 @@ class SignIn extends React.Component {
            // If MFA is enabled, sign-in should be confirmed with the confirmation code
            // const loggedUser = await Auth.confirmSignIn(
            //    user,   // Return object from Auth.signIn()
-           //     code,   // Confirmation code  
+           //     code,   // Confirmation code
            //     mfaType // MFA Type e.g. SMS_MFA, SOFTWARE_TOKEN_MFA
            // );
         } else if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
@@ -233,6 +234,47 @@ class SignIn extends React.Component {
     <div className="Amplify-component">
       <h4>Sign In as testUser</h4>
       <button onClick={this.handleSignIn}>Sign In</button>
+    </div>
+    );
+  }
+}
+
+class CurrentUserCredentials extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCurrentUserCredentials = this.handleCurrentUserCredentials.bind(this);
+  }
+  handleCurrentUserCredentials(){
+    Auth.currentUserCredentials()
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+    <div className="Amplify-component">
+      <h4>Current User Credentials</h4>
+      <button onClick={this.handleCurrentUserCredentials}>Check Console</button>
+    </div>
+    );
+  }
+}
+class CurrentCredentials extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCurrentCredentials = this.handleCurrentCredentials.bind(this);
+  }
+  handleCurrentCredentials(){
+    Auth.currentCredentials()
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+    <div className="Amplify-component">
+      <h4>Current Credentials</h4>
+      <button onClick={this.handleCurrentCredentials}>Check Console</button>
     </div>
     );
   }
