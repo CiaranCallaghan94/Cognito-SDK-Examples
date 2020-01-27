@@ -11,22 +11,22 @@ Amplify.configure({
       // only for Federated Authentication - Amazon Cognito Identity Pool ID
       identityPoolId: '',
       // - Amazon Cognito Region
-      region: '',
+      region: 'us-east-1',
       // - Amazon Cognito User Pool ID
-      userPoolId: '',
+      userPoolId: 'us-east-1_ZCYCSvL0x',
       // - Amazon Cognito Web Client ID (26-char alphanumeric string)
-      userPoolWebClientId: '',
+      userPoolWebClientId: '1dughnh40qf03alorufeliheo7',
       // - Enforce user authentication prior to accessing AWS resources or not
       mandatorySignIn: false,
 
-	// OPTIONAL - Hosted UI configuration
-	  oauth: {
-		domain: '',
-		scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-		redirectSignIn: '',
-		redirectSignOut: '',
-		responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
-	  }
+  // OPTIONAL - Hosted UI configuration
+    oauth: {
+    domain: 'googleidp.auth.us-east-1.amazoncognito.com',
+    scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
+    redirectSignIn: 'http://localhost:3000/',
+    redirectSignOut: 'http://localhost:3000/',
+    responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
+    }
   }
 });
 
@@ -35,7 +35,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     Hub.listen('auth', (data) => {
-		console.log(data);
+    console.log(data);
         switch (data.payload.event) {
             case 'signIn':
                 alert("Signed in");
@@ -43,8 +43,8 @@ class App extends React.Component {
             case 'signIn_failure':
                 alert("Sign in failure");
                 break;
-			case  'signOut':
-				alert("Sign Out");
+      case  'signOut':
+        alert("Sign Out");
                 break;
             default:
                 break;
@@ -60,13 +60,14 @@ class App extends React.Component {
             Below are some examples of Cognito functionality written using Amplify SDK
           </p>
         </header>
-		    <SignIn/>
-		    <OauthSignIn/>
+        <SignIn/>
+        <OauthSignIn/>
         <SignOut/>
         <CurrentAuthenticatedUser/>
         <RetrieveCurrentSession/>
         <CurrentUserCredentials/>
         <CurrentCredentials/>
+        <SocialLogins/>
       </div>
     );
   }
@@ -171,9 +172,9 @@ class SignIn extends React.Component {
   }
   async handleSignIn(){
      try {
-		// Test Data
-		var username = "testUser"
-		var password = "Password123!"
+    // Test Data
+    var username = "ticker"
+    var password = "Ticker123!@£"
         const user = await Auth.signIn(username, password);
         if (user.challengeName === 'SMS_MFA' ||
             user.challengeName === 'SOFTWARE_TOKEN_MFA') {
@@ -279,6 +280,42 @@ class CurrentCredentials extends React.Component {
     );
   }
 }
+
+////////SOCIAL
+class SocialLogins extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleRetrieveCurrentSession = this.handleRetrieveCurrentSession.bind(this);
+  }
+  handleRetrieveCurrentSession(){
+    Auth.currentSession()
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+  }
+
+  googleLogin() {
+    Auth.federatedSignIn({provider: 'Google'}).then(() => 
+      Auth.currentSession()
+    )
+  }
+
+  facebookLogin() {
+    Auth.federatedSignIn({provider: 'Facebook'}).then(() => 
+      Auth.currentSession()
+    )
+  }
+
+  render() {
+    return (
+    <div className="Amplify-component">
+      <h4>Social Logins</h4>
+      <button onClick={this.googleLogin}>Google</button>
+      <button onClick={this.facebookLogin}>Facebook</button>
+    </div>
+    );
+  }
+}
+//////
 
 // New Component
 /*
