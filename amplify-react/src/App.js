@@ -311,6 +311,12 @@ class SocialLogins extends React.Component {
     )
   }
 
+  amazonLogin() {
+    Auth.federatedSignIn({provider: 'LoginWithAmazon'}).then(() => 
+      Auth.currentSession()
+    )
+  }
+
   render() {
     return (
     <div className="Amplify-component">
@@ -318,6 +324,7 @@ class SocialLogins extends React.Component {
       <button onClick={this.googleLogin}>Google</button>
       <button onClick={this.facebookLogin}>Facebook</button>
       <button onClick={this.appleLogin}>Apple</button>
+      <button onClick={this.amazonLogin}>Amazon</button>
     </div>
     );
   }
