@@ -13,18 +13,18 @@ Amplify.configure({
       // - Amazon Cognito Region
       region: 'us-east-1',
       // - Amazon Cognito User Pool ID
-      userPoolId: 'us-east-1_ZCYCSvL0x',
+      userPoolId: 'us-east-1_HZhKYINwR',
       // - Amazon Cognito Web Client ID (26-char alphanumeric string)
-      userPoolWebClientId: '1dughnh40qf03alorufeliheo7',
+      userPoolWebClientId: '2tv7gvrillonuaq6lovk3h0mr2',
       // - Enforce user authentication prior to accessing AWS resources or not
       mandatorySignIn: false,
 
   // OPTIONAL - Hosted UI configuration
     oauth: {
-    domain: 'googleidp.auth.us-east-1.amazoncognito.com',
+    domain: 'firstcogpool.auth.us-east-1.amazoncognito.com',
     scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-    redirectSignIn: 'http://localhost:3000/',
-    redirectSignOut: 'http://localhost:3000/',
+    redirectSignIn: 'https://www.google.com.pk',
+    redirectSignOut: 'https://www.linkedin.com',
     responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
     }
   }
@@ -305,12 +305,19 @@ class SocialLogins extends React.Component {
     )
   }
 
+  appleLogin() {
+    Auth.federatedSignIn({provider: 'SignInWithApple'}).then(() => 
+      Auth.currentSession()
+    )
+  }
+
   render() {
     return (
     <div className="Amplify-component">
       <h4>Social Logins</h4>
       <button onClick={this.googleLogin}>Google</button>
       <button onClick={this.facebookLogin}>Facebook</button>
+      <button onClick={this.appleLogin}>Apple</button>
     </div>
     );
   }
