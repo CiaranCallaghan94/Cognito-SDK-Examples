@@ -11,20 +11,20 @@ Amplify.configure({
       // only for Federated Authentication - Amazon Cognito Identity Pool ID
       identityPoolId: '',
       // - Amazon Cognito Region
-      region: 'us-east-1',
+      region: '',
       // - Amazon Cognito User Pool ID
-      userPoolId: 'us-east-1_HZhKYINwR',
+      userPoolId: '',
       // - Amazon Cognito Web Client ID (26-char alphanumeric string)
-      userPoolWebClientId: '2tv7gvrillonuaq6lovk3h0mr2',
+      userPoolWebClientId: '',
       // - Enforce user authentication prior to accessing AWS resources or not
       mandatorySignIn: false,
 
   // OPTIONAL - Hosted UI configuration
     oauth: {
-    domain: 'firstcogpool.auth.us-east-1.amazoncognito.com',
+    domain: '',
     scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-    redirectSignIn: 'https://www.google.com.pk',
-    redirectSignOut: 'https://www.linkedin.com',
+    redirectSignIn: '',
+    redirectSignOut: '',
     responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
     }
   }
