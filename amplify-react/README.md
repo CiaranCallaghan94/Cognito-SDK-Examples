@@ -11,7 +11,7 @@ Usage:
 - then 'npm start'
 
 [New components added]
-![APP UI](./README_Images/UI.jpg?raw=true "Title")
+![APP UI](./UI.jpg?raw=true "Title")
 
 To update the app to use your own Cognito resources, simply update the Auth object in the App.js:
 Example:
